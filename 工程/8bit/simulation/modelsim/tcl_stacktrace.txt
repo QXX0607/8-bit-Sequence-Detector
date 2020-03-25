@@ -1,0 +1,10 @@
+Sun Jun 16 21:02:23 CST 2019
+Trace back: can't read "itk_component(nlv)": no such element in array
+    while executing
+"set nlv $itk_component(nlv)"
+    (object "::.main_pane.dataflow.interior.cs.body.pw.df.c" method "::vsimwidgets::Dataflow::Base::RegenerateLayout" body line 15)
+    invoked from within
+"::.main_pane.dataflow.interior.cs.body.pw.df.c RegenerateLayout -placement"
+    ("after" script)
+  <2:E:/QuartusII/modelsim_ase/win32aloem/tk8.5/bgerror.tcl:92: ::tkerror {can't read "itk_component(nlv)": no such element in array}
+  <1:eval:1: ::tk::dialog::error::bgerror {can't read "itk_component(nlv)": no such element in array}

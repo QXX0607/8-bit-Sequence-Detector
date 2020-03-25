@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Wed Aug 27 15:23:34 2014
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : SegLed_DynamDisp
+Top-level Entity Name : segled_eynamDisp
+Family : Cyclone IV E
+Total logic elements : 91
+    Total combinational functions : 91
+    Dedicated logic registers : 50
+Total registers : 50
+Total pins : 14
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

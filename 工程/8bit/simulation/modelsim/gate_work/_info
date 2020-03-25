@@ -1,0 +1,76 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim
+vcount4
+Z1 !s110 1561081557
+!i10b 1
+!s100 @GV29Qhel63gR[GV<h2^G0
+Id`CDLF]D]hZG>2;ZJdBZI2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1560766116
+Z4 8count4_8_1200mv_85c_slow.vo
+Z5 Fcount4_8_1200mv_85c_slow.vo
+L0 31
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1561081556.000000
+Z8 !s107 count4_8_1200mv_85c_slow.vo|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+.|count4_8_1200mv_85c_slow.vo|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work +incdir+.
+Z12 tCvgOpt 0
+vcount4_tb
+R1
+!i10b 1
+!s100 2kigRQH`jG6KhYhI:8`303
+IZc>iB8Pm=gO=EDh;;`CU03
+R2
+R0
+w1560740044
+8E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt
+FE:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt
+L0 28
+R6
+r1
+!s85 0
+31
+!s108 1561081557.000000
+!s107 E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim|E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt|
+!i113 1
+R10
+!s92 -vlog01compat -work work +incdir+E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim
+R12
+vhard_block
+R1
+!i10b 1
+!s100 25PDVMA;3K2lj=GglA7<Y2
+I?oJFkQHkZ:JBg8B_GISGY0
+R2
+R0
+R3
+R4
+R5
+L0 2797
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12

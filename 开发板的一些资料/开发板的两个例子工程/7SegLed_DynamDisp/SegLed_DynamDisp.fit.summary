@@ -1,0 +1,16 @@
+Fitter Status : Successful - Wed Aug 27 15:23:42 2014
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : SegLed_DynamDisp
+Top-level Entity Name : segled_eynamDisp
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 91 / 6,272 ( 1 % )
+    Total combinational functions : 91 / 6,272 ( 1 % )
+    Dedicated logic registers : 50 / 6,272 ( 1 % )
+Total registers : 50
+Total pins : 14 / 92 ( 15 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

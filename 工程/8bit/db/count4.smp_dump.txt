@@ -1,0 +1,11 @@
+
+State Machine - |count4|pstate
+Name pstate.s7 pstate.s6 pstate.s5 pstate.s4 pstate.s3 pstate.s2 pstate.s1 pstate.s0 
+pstate.s0 0 0 0 0 0 0 0 0 
+pstate.s1 0 0 0 0 0 0 1 1 
+pstate.s2 0 0 0 0 0 1 0 1 
+pstate.s3 0 0 0 0 1 0 0 1 
+pstate.s4 0 0 0 1 0 0 0 1 
+pstate.s5 0 0 1 0 0 0 0 1 
+pstate.s6 0 1 0 0 0 0 0 1 
+pstate.s7 1 0 0 0 0 0 0 1 

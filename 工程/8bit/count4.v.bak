@@ -1,0 +1,224 @@
+module count4(x3,x2,x1,x0,z7,z6,z5,z4,z3,z2,z1,z0,clk,rst_n);
+	input clk,rst_n;//时钟和复位信号
+	input x3,x2,x1,x0;//4bit数据输入
+	//input key2;//输入确认
+	output z7,z6,z5,z4,z3,z2,z1,z0;//对应LED灯，用于输出输入的序列以及检测结果
+	reg z7,z6,z5,z4,z3,z2,z1,z0;
+	reg[2:0] pstate;
+	reg[19:0] cnt_base;
+	reg outkey;
+	reg[5:0] count;
+	reg[1:0] key_in_r;	
+	//变量初始化
+	
+	always @(posedge clk) /////////////////clk
+	begin//用于显示上一次输入的数据
+      z7=x3;
+		z6=x2;
+		z5=x1;
+		z4=x0;
+	end 
+
+	parameter 
+          S0=3'd0,
+			 S1=3'd1,
+          S2=3'd2,
+          S3=3'd3,
+          S4=3'd4,
+          S5=3'd5,
+          S6=3'd6,
+          S7=3'd7; //定义状态机中的状态
+	always @(posedge clk or negedge rst_n ) //这里的clk本来是outclk、、、、
+	begin
+	if(!rst_n) //复位信号低电平有效
+	begin//复位信号的处理
+		  pstate=S0;//状态置回S0
+		  z3=1'b0;
+		  z2=1'b0;
+		  z1=1'b0;
+		  z0=1'b0;
+		  count=1'b0;
+	end
+	else 
+	begin  //如果没有复位
+	
+		if(count==0)//z0起始置零
+			z0=1'b0;
+		//pstate==S7什么意思：已经达到最后一个状态
+		
+		if(pstate==S7 && x3==0)//处理前一次输入的4bit数据中最后一位x3为0的情况
+		begin //在这种情况下，认为我们已经找到了“预置的序列”//采用二进制数的形式进行计数和显示
+		
+		count=count+1;//计数，记录我们一共找到了几个这样的序列
+			case(count)//用z3~z0输出在输入序列中预置代码的出现次数
+			1:z0=1'b1;
+			2:begin z0=1'b0;z1=1'b1;end //0是低位，3是高位 
+			3:begin z0=1'b1;z1=1'b1;end  
+			4:begin z0=1'b0;z1=1'b0;z2=1'b1;end  
+			5:begin z0=1'b1;z1=1'b0;z2=1'b1;end  
+			6:begin z0=1'b0;z1=1'b1;z2=1'b1;end 
+			7:begin z0=1'b1;z1=1'b1;z2=1'b1;end  
+			8:begin z0=1'b0;z1=1'b0;z2=1'b0;z3=1'b1;end
+			9:begin z0=1'b1;z1=1'b0;z2=1'b0;z3=1'b1;end
+			10:begin z0=1'b0;z1=1'b1;z2=1'b0;z3=1'b1;end
+			11:begin z0=1'b1;z1=1'b1;z2=1'b0;z3=1'b1;end
+			12:begin z0=1'b0;z1=1'b0;z2=1'b1;z3=1'b1;end
+			13:begin z0=1'b1;z1=1'b0;z2=1'b1;z3=1'b1;end
+			14:begin z0=1'b0;z1=1'b1;z2=1'b1;z3=1'b1;end
+			15:begin z0=1'b1;z1=1'b1;z2=1'b1;z3=1'b1;end
+			endcase
+		end
+		case(pstate)  //不满足if (pstate==S7 && x3==0)，即如果不是最后一个状态，没有找到预置代码
+		//根据输入数据pstate到了哪一个状态进行状态转化
+		  S0:
+            pstate=x3?S1:S0;//如果输入为0，则跳向下一S1状态，否则跳回本状态
+        S1:
+            pstate=x3?S1:S2;
+        S2:
+            pstate=x3?S3:S0;
+        S3:
+            pstate=x3?S4:S0;
+        S4:
+            pstate=x3?S5:S0;
+        S5:
+            pstate=x3?S1:S6;
+		  S6:
+			   pstate=x3?S1:S7;//如果输入为0，则跳回到S1状态，否则跳向下一状态
+		  S7:
+			   pstate=x3?S1:S0;//如果输入为1，则从S0状态从头开始
+        default:
+            pstate=S0;
+    endcase
+
+		if (pstate==S7 && x2==0)//处理输入的4bit数据中第三位为0的情况
+		begin
+			
+			count=count+1;//计数
+			case(count) 
+			1:z0=1'b1;
+			2:begin z0=1'b0;z1=1'b1;end
+			3:begin z0=1'b1;z1=1'b1;end
+			4:begin z0=1'b0;z1=1'b0;z2=1'b1;end
+			5:begin z0=1'b1;z1=1'b0;z2=1'b1;end
+			6:begin z0=1'b0;z1=1'b1;z2=1'b1;end
+			7:begin z0=1'b1;z1=1'b1;z2=1'b1;end
+			8:begin z0=1'b0;z1=1'b0;z2=1'b0;z3=1'b1;end
+			9:begin z0=1'b1;z1=1'b0;z2=1'b0;z3=1'b1;end
+			10:begin z0=1'b0;z1=1'b1;z2=1'b0;z3=1'b1;end
+			11:begin z0=1'b1;z1=1'b1;z2=1'b0;z3=1'b1;end
+			12:begin z0=1'b0;z1=1'b0;z2=1'b1;z3=1'b1;end
+			13:begin z0=1'b1;z1=1'b0;z2=1'b1;z3=1'b1;end
+			14:begin z0=1'b0;z1=1'b1;z2=1'b1;z3=1'b1;end
+			15:begin z0=1'b1;z1=1'b1;z2=1'b1;z3=1'b1;end
+				endcase
+			end
+	    case(pstate)//根据输入数据进行状态转化
+		  S0:
+            pstate=x2?S1:S0;//如果输入为0，则跳向下一S1状态，否则跳回本状态
+        S1:
+            pstate=x2?S1:S2;
+        S2:
+            pstate=x2?S3:S0;
+        S3:
+            pstate=x2?S4:S0;
+        S4:
+            pstate=x2?S5:S0;
+        S5:
+            pstate=x2?S1:S6;
+		  S6:
+			   pstate=x2?S1:S7;//如果输入为0，则跳回到S1状态，否则跳向下一状态
+		  S7:
+			   pstate=x2?S1:S0;//如果输入为1，则从S0状态从头开始
+        default:
+            pstate=S0;
+    endcase
+	
+		if (pstate==S7 && x1==0)//处理输入的4bit数据中第二位为0的情况
+			begin
+			
+			count=count+1;//计数
+			case(count)
+			1:z0=1'b1;
+			2:begin z0=1'b0;z1=1'b1;end
+			3:begin z0=1'b1;z1=1'b1;end
+			4:begin z0=1'b0;z1=1'b0;z2=1'b1;end
+			5:begin z0=1'b1;z1=1'b0;z2=1'b1;end
+			6:begin z0=1'b0;z1=1'b1;z2=1'b1;end
+			7:begin z0=1'b1;z1=1'b1;z2=1'b1;end
+			8:begin z0=1'b0;z1=1'b0;z2=1'b0;z3=1'b1;end
+			9:begin z0=1'b1;z1=1'b0;z2=1'b0;z3=1'b1;end
+			10:begin z0=1'b0;z1=1'b1;z2=1'b0;z3=1'b1;end
+			11:begin z0=1'b1;z1=1'b1;z2=1'b0;z3=1'b1;end
+			12:begin z0=1'b0;z1=1'b0;z2=1'b1;z3=1'b1;end
+			13:begin z0=1'b1;z1=1'b0;z2=1'b1;z3=1'b1;end
+			14:begin z0=1'b0;z1=1'b1;z2=1'b1;z3=1'b1;end
+			15:begin z0=1'b1;z1=1'b1;z2=1'b1;z3=1'b1;end
+			endcase
+		end
+	    case(pstate)
+		  S0:
+            pstate=x1?S1:S0;//如果输入为0，则跳向下一S1状态，否则跳回本状态
+        S1:
+            pstate=x1?S1:S2;
+        S2:
+            pstate=x1?S3:S0;
+        S3:
+            pstate=x1?S4:S0;
+        S4:
+            pstate=x1?S5:S0;
+        S5:
+            pstate=x1?S1:S6;
+		  S6:
+			   pstate=x1?S1:S7;//如果输入为0，则跳回到S1状态，否则跳向下一状态
+		  S7:
+			   pstate=x1?S1:S0;//如果输入为1，则从S0状态从头开始
+        default:
+            pstate=S0;
+     endcase
+	//根据输入数据进行状态转化
+		if (pstate==S7 && x0==0)//处理输入的4bit数据中第一位为0的情况
+		begin
+		
+		count=count+1;//计数
+		case(count)
+			1:z0=1'b1;
+			2:begin z0=1'b0;z1=1'b1;end
+			3:begin z0=1'b1;z1=1'b1;end
+			4:begin z0=1'b0;z1=1'b0;z2=1'b1;end
+			5:begin z0=1'b1;z1=1'b0;z2=1'b1;end
+			6:begin z0=1'b0;z1=1'b1;z2=1'b1;end
+			7:begin z0=1'b1;z1=1'b1;z2=1'b1;end
+			8:begin z0=1'b0;z1=1'b0;z2=1'b0;z3=1'b1;end
+			9:begin z0=1'b1;z1=1'b0;z2=1'b0;z3=1'b1;end
+			10:begin z0=1'b0;z1=1'b1;z2=1'b0;z3=1'b1;end
+			11:begin z0=1'b1;z1=1'b1;z2=1'b0;z3=1'b1;end
+			12:begin z0=1'b0;z1=1'b0;z2=1'b1;z3=1'b1;end
+			13:begin z0=1'b1;z1=1'b0;z2=1'b1;z3=1'b1;end
+			14:begin z0=1'b0;z1=1'b1;z2=1'b1;z3=1'b1;end
+			15:begin z0=1'b1;z1=1'b1;z2=1'b1;z3=1'b1;end
+			endcase
+		end
+	    case(pstate)
+			 S0:
+            pstate=x0?S1:S0;//如果输入为0，则跳向下一S1状态，否则跳回本状态
+        S1:
+            pstate=x0?S1:S2;
+        S2:
+            pstate=x0?S3:S0;
+        S3:
+            pstate=x0?S4:S0;
+        S4:
+            pstate=x0?S5:S0;
+        S5:
+            pstate=x0?S1:S6;
+		  S6:
+			   pstate=x0?S1:S7;//如果输入为0，则跳回到S1状态，否则跳向下一状态
+		  S7:
+			   pstate=x0?S1:S0;//如果输入为1，则从S0状态从头开始
+        default:
+            pstate=S0;
+    endcase
+	end
+//根据输入数据进行状态转化
+end
+endmodule

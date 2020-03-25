@@ -1,0 +1,144 @@
+# Reading E:/QuartusII/modelsim_ase/tcl/vsim/pref.tcl
+# do count4_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying E:/QuartusII/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+E:/QuartusII/Quartusll_Pro/demo12 {E:/QuartusII/Quartusll_Pro/demo12/count4.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:40:17 on Jun 25,2019
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/QuartusII/Quartusll_Pro/demo12" E:/QuartusII/Quartusll_Pro/demo12/count4.v 
+# -- Compiling module count4
+# 
+# Top level modules:
+# 	count4
+# End time: 11:40:17 on Jun 25,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim {E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:40:17 on Jun 25,2019
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim" E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt 
+# -- Compiling module count4_tb
+# 
+# Top level modules:
+# 	count4_tb
+# End time: 11:40:17 on Jun 25,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  count4_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" count4_tb 
+# Start time: 11:40:22 on Jun 25,2019
+# Loading work.count4_tb
+# Loading work.count4
+# ** Warning: (vsim-3017) E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt(48): [TFMPC] - Too few port connections. Expected 15, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /count4_tb/i1 File: E:/QuartusII/Quartusll_Pro/demo12/count4.v
+# ** Warning: (vsim-3722) E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt(48): [TFMPC] - Missing connection for port 'sclk'.
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+#                    0  abcdefgh = xxxx0000
+#                  140  abcdefgh = 10110000
+#                  252  abcdefgh = 11110000
+#                  364  abcdefgh = 01110000
+#                  476  abcdefgh = 11100001
+#                  588  abcdefgh = 11110001
+#                  700  abcdefgh = 11010001
+#                  812  abcdefgh = 11110001
+#                  924  abcdefgh = 10100001
+#                 1036  abcdefgh = 11110001
+#                 1148  abcdefgh = 01000001
+#                 1260  abcdefgh = 11100001
+#                 1372  abcdefgh = 10000001
+#                 1484  abcdefgh = 11010001
+#                 1596  abcdefgh = 00000001
+#                 1708  abcdefgh = 10100001
+#                 1820  abcdefgh = 00000001
+#                 1932  abcdefgh = 01000001
+#                 2044  abcdefgh = 00000001
+#                 2156  abcdefgh = 10000001
+#                 2268  abcdefgh = 00010001
+#                 2380  abcdefgh = 00000001
+#                 2492  abcdefgh = 00100001
+#                 2604  abcdefgh = 00000001
+#                 2716  abcdefgh = 01010001
+#                 2828  abcdefgh = 00000001
+#                 2940  abcdefgh = 10110001
+#                 3052  abcdefgh = 00010001
+#                 3164  abcdefgh = 01110001
+#                 3276  abcdefgh = 00100001
+#                 3388  abcdefgh = 11110001
+#                 3500  abcdefgh = 01010001
+#                 3612  abcdefgh = 11110001
+#                 3724  abcdefgh = 10110001
+#                 3836  abcdefgh = 11110001
+#                 3948  abcdefgh = 01110001
+#                 4060  abcdefgh = 11100010
+#                 4172  abcdefgh = 11110010
+#                 4284  abcdefgh = 11010010
+#                 4396  abcdefgh = 11110010
+#                 4508  abcdefgh = 10100010
+#                 4620  abcdefgh = 11110010
+#                 4732  abcdefgh = 01000010
+#                 4844  abcdefgh = 11100010
+#                 4956  abcdefgh = 10000010
+#                 5068  abcdefgh = 11010010
+#                 5180  abcdefgh = 00000010
+#                 5292  abcdefgh = 10100010
+#                 5404  abcdefgh = 00000010
+#                 5516  abcdefgh = 01000010
+#                 5628  abcdefgh = 00000010
+#                 5740  abcdefgh = 10000010
+#                 5852  abcdefgh = 00010010
+#                 5964  abcdefgh = 00000010
+#                 6076  abcdefgh = 00100010
+#                 6188  abcdefgh = 00000010
+#                 6300  abcdefgh = 01010010
+#                 6412  abcdefgh = 00000010
+#                 6524  abcdefgh = 10110010
+#                 6636  abcdefgh = 00010010
+#                 6748  abcdefgh = 01110010
+#                 6860  abcdefgh = 00100010
+#                 6972  abcdefgh = 11110010
+#                 7084  abcdefgh = 01010010
+#                 7196  abcdefgh = 11110010
+#                 7308  abcdefgh = 10110010
+#                 7420  abcdefgh = 11110010
+#                 7532  abcdefgh = 01110010
+#                 7644  abcdefgh = 11100011
+#                 7756  abcdefgh = 11110011
+#                 7868  abcdefgh = 11010011
+#                 7980  abcdefgh = 11110011
+#                 8092  abcdefgh = 10100011
+#                 8204  abcdefgh = 11110011
+#                 8316  abcdefgh = 01000011
+#                 8428  abcdefgh = 11100011
+#                 8540  abcdefgh = 10000011
+#                 8652  abcdefgh = 11010011
+#                 8764  abcdefgh = 00000011
+#                 8876  abcdefgh = 10100011
+#                 8988  abcdefgh = 00000011
+#                 9100  abcdefgh = 01000011
+#                 9212  abcdefgh = 00000011
+#                 9324  abcdefgh = 10000011
+#                 9436  abcdefgh = 00010011
+#                 9548  abcdefgh = 00000011
+#                 9660  abcdefgh = 00100011
+#                 9772  abcdefgh = 00000011
+#                 9884  abcdefgh = 01010011
+#                 9996  abcdefgh = 00000011
+# ** Note: $stop    : E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt(74)
+#    Time: 10100 ns  Iteration: 0  Instance: /count4_tb
+# Break in Module count4_tb at E:/QuartusII/Quartusll_Pro/demo12/simulation/modelsim/count4.vt line 74
+# End time: 11:53:26 on Jun 25,2019, Elapsed time: 0:13:04
+# Errors: 0, Warnings: 2
